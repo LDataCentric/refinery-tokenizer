@@ -3,10 +3,9 @@ import requests
 import json
 import time
 import daemon
+import os
 
 __config = None
-
-REQUEST_URL = "http://refinery-config:80/full_config"
 
 
 def __get_config() -> Dict[str, Any]:
@@ -18,7 +17,7 @@ def __get_config() -> Dict[str, Any]:
 
 
 def refresh_config():
-    response = requests.get(REQUEST_URL)
+    response = requests.get(f"{os.getenv('CONFIG')}/full_config")
     if response.status_code == 200:
         global __config
         __config = json.loads(json.loads(response.text))
