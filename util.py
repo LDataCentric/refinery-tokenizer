@@ -265,7 +265,7 @@ def create_rats_entries(
                                 project_id=project_id,
                                 record_id=record_item.record_id,
                                 attribute_id=text_attributes[col],
-                                num_token=len(docs[col]),
+                                num_token=len(docs[col]) if docs else 0,
                             )
                         )
             if not project.get(project_id):

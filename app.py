@@ -66,3 +66,9 @@ async def error_handler() -> JSONResponse:
 def config_changed() -> int:
     config_handler.refresh_config()
     return 200
+
+
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run(app, host="0.0.0.0", port=2874)
